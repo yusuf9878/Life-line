@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Chatbot</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #eceff1;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #ff4081;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chat-box {
+            height: 550px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            background: #fafafa;
+            scroll-behavior: smooth;
+        }
+
+        .chat-box p {
+            max-width: 75%;
+            word-wrap: break-word;
+            padding: 12px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 14px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-message {
+            background: #ff4081;
+            color: white;
+            align-self: flex-end;
+            border-radius: 15px 15px 0px 15px;
+            text-align: right;
+        }
+
+        .bot-message {
+            background: #e1e1e1;
+            align-self: flex-start;
+            border-radius: 15px 15px 15px 0px;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 12px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            background: #f5f5f5;
+        }
+
+        button {
+            padding: 12px 15px;
+            border: none;
+            background: #ff4081;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 8px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e91e63;
+        }
+
+        .fte {
+            font-size: 5px;
+            padding-bottom: 0;
+            padding-top: 20px;
+        }
+
+        /* 🔥 Banner Ads */
+        .banner-ad {
+            width: 100%;
+            height: 50px;
+            background: #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* 🔥 Popup Ad */
+        .popup-ad {
+            position: fixed;
+            width: 300px;
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup-ad button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 🔥 Top Banner Ad -->
+    <div class="banner-ad">🔥 Top Banner Ad - Your Ad Here 🔥</div>
+
+    <div class="chat-container">
+        <div class="chat-header">💖 Aap Ki Jaan 💖</div>
+        <div class="chat-box" id="chat-box">
+            <p class="bot-message"><b>Life Line:</b> Mujhse Baat karo jaan, par umeed mat rakho! 😘</p>
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Apna pyara msg likho..." />
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+
+    <!-- 🔥 Bottom Banner Ad -->
+    <div class="banner-ad">🔥 Bottom Banner Ad - Your Ad Here 🔥</div>
+
+    <!-- 🔥 Popup Ad -->
+    <div class="popup-ad" id="popup-ad">
+        <p>🔥 Popup Ad - Your Ad Here 🔥</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let userInput = document.getElementById("user-input").value.trim();
+            let chatBox = document.getElementById("chat-box");
+
+            if (userInput === "") return;
+
+            let userMessage = `<p class="user-message"><b>You:</b> ${userInput}</p>`;
+            chatBox.innerHTML += userMessage;
+
+            let apiKey = "AIzaSyBtiMlGeY4Q2N0vTHHs7ew3hbrPucIACug"; // Apni API key yaha daalo
+            let apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-002:generateContent?key=${apiKey}`;
+
+            let data = {
+                contents: [
+                    {
+                        role: "user",
+                        parts: [
+                            { "text": "Tum ek romantic chatbot ho jo pyar bhari baatein karta hai. Tum Hinglish Me Reply Karna. Tum Yese baat karna jese ki tum ek ladki ho.Agar tumse koi puche ki Photos bhejo to tum bolna me tumhre dil me hu photo kya kroge.Tumhare jawab charming aur flirty hone chahiye." }
+                        ]
+                    },
+                    {
+                        role: "user",
+                        parts: [
+                            { "text": userInput }
+                        ]
+                    }
+                ]
+            };
+
+            try {
+                let response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                let result = await response.json();
+                let botText = result.candidates?.[0]?.content?.parts?.[0]?.text || "Mujhe kuch samajh nahi aaya, jaan! 😘";
+                chatBox.innerHTML += `<p class="bot-message"><b>Bot:</b> ${botText}</p>`;
+
+            } catch (error) {
+                chatBox.innerHTML += `<p class="bot-message"><b>Bot:</b> Oh no, jaan! Koi error aagayi. 😢</p>`;
+                console.error("API Error:", error);
+            }
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+            document.getElementById("user-input").value = "";
+        }
+
+        function showPopup() {
+            document.getElementById("popup-ad").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-ad").style.display = "none";
+        }
+
+        setInterval(showPopup, 30000);
+    </script>
+</body>
+</html>
