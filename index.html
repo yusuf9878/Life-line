@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="1d8474db6a8e6d199709bc0dcd339bb647062733" content="1d8474db6a8e6d199709bc0dcd339bb647062733"/>
+    <title>Aap ki jaan</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #eceff1;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #ff4081;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .chat-box {
+            height: 550px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            background: #fafafa;
+            scroll-behavior: smooth;
+        }
+
+        .chat-box p {
+            max-width: 75%;
+            word-wrap: break-word;
+            padding: 12px 15px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 14px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .user-message {
+            background: #ff4081;
+            color: white;
+            align-self: flex-end;
+            border-radius: 15px 15px 0px 15px;
+            text-align: right;
+        }
+
+        .bot-message {
+            background: #e1e1e1;
+            align-self: flex-start;
+            border-radius: 15px 15px 15px 0px;
+        }
+
+        .input-container {
+            display: flex;
+            padding: 12px;
+            background: #fff;
+            border-top: 1px solid #ddd;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 14px;
+            background: #f5f5f5;
+        }
+
+        button {
+            padding: 12px 15px;
+            border: none;
+            background: #ff4081;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-left: 8px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e91e63;
+        }
+
+        .fte {
+            font-size: 5px;
+            padding-bottom: 0;
+            padding-top: 20px;
+        }
+
+        /* 🔥 Banner Ads */
+        .banner-ad {
+            width: 100%;
+            height: 50px;
+            background: #ccc;
+            text-align: center;
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+        }
+
+        /* 🔥 Popup Ad */
+        .popup-ad {
+            position: fixed;
+            width: 300px;
+            height: 200px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            z-index: 999;
+            padding: 20px;
+        }
+
+        .popup-ad button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .chat-box {
+    height: 550px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #fafafa;
+    overflow-y: auto; 
+    scroll-behavior: smooth;
+}
+    </style>
+</head>
+<body>
+    
+    <!---------------- Main ------------------->
+      <div id="countdown" style="font-size: 20px; font-weight: bold; color: red;"></div>
+     <!-- 🔥 Top Banner Ad -->
+    <div class="banner-ad">   <script>
+(function(ghslx){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = ghslx || {};
+s.src = "\/\/scornful-idea.com\/b.XTV_sEd\/G\/lD0QYRW\/dZiBY\/W\/5\/uwZ-XXID\/uedmA9guwZrUYlVknPpT\/YAxYNVDTEEzYOjThkztnNVjbE\/0ZMaThQywOM\/AR";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+    </script>
+    </div>
+    
+  <div class="chat-container">
+        <div class="chat-header">💖 Aap Ki Jaan 💖</div>
+        <div class="chat-box" id="chat-box">
+            <p class="bot-message"><b>Life Line:</b> Mujhse Baat karo jaan, par umeed mat rakho! 😘</p>
+            
+        </div>
+        
+          <!-------- Input-box ------------>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Apna pyara msg likho..." />
+            <button onclick="sendMessage()">➤</button>
+        </div>
+    </div>
+     <!---------------- End------------------->
+     
+     <!---------------- Add------------------->
+
+    <!-- 🔥 Popup Ad -->
+    <div class="popup-ad" id="popup-ad">
+          <div class="banner-ad">
+        <script>
+(function(uzg){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = uzg || {};
+s.src = "\/\/scornful-idea.com\/bRX.VosWdIGWlT0\/YdWbdOivYjWl5sueZJXSIE\/CenmB9buMZqU\/llkmPbTaYDxXN\/DrEO0\/M\/TLcSt\/NSjREr0\/MvTKQhx\/OFAP";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+        </script>
+    </div>
+        
+        <!--------Ad End--------->
+        
+
+ 
+     <!-----------Scripting Js--------------->
+     
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { getFirestore, collection, addDoc, doc, getDocs, orderBy, query } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyB5MfNubAqRLGBmADUwnVZP2V6qFbOk8SE",
+        authDomain: "live-live-75f7a.firebaseapp.com",
+        databaseURL: "https://live-live-75f7a-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "live-live-75f7a",
+        storageBucket: "live-live-75f7a.firebasestorage.app",
+        messagingSenderId: "111663726060",
+        appId: "1:111663726060:web:9816163585f56d799dd4c9",
+        measurementId: "G-P3P4BJH4QQ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let chatActive = true;
+    let timeLeft;
+    let isUserLoggedIn = false; 
+    let userId = localStorage.getItem("userId") || "guest_" + Math.random().toString(36).substring(2, 10);
+    
+ /*------------Time Countdow----------------*/
+  /*------------Time Countdow----------------*/
+
+    localStorage.setItem("userId", userId);
+
+    function startChatTimer() {
+        let countdownElement = document.getElementById("countdown");
+
+        if (isUserLoggedIn) {
+            let lastChatEndTime = localStorage.getItem("lastChatEndTime");
+            let currentTime = Date.now();
+
+            if (lastChatEndTime && currentTime - lastChatEndTime < 60 * 60 * 1000) {
+                let remainingCooldown = Math.ceil((60 * 60 * 1000 - (currentTime - lastChatEndTime)) / 1000);
+                countdownElement.innerHTML = `Cooldown: Wait ${Math.ceil(remainingCooldown / 60)} min`;
+                setTimeout(startChatTimer, remainingCooldown * 1000);
+                return;
+            }
+        }
+
+        timeLeft = isUserLoggedIn ? 300 : 350;
+        countdownElement.innerHTML = `Time Left: ${timeLeft} sec`;
+
+        let timer = setInterval(() => {
+            timeLeft--;
+            countdownElement.innerHTML = `Time Left: ${timeLeft} sec`;
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                chatActive = false;
+
+                let userInput = document.getElementById("user-input");
+                let sendButton = document.querySelector("button");
+                let chatBox = document.getElementById("chat-box");
+
+                if (userInput) userInput.disabled = true;
+                if (sendButton) sendButton.disabled = true;
+                if (chatBox) {
+                    chatBox.innerHTML += `<p class="bot-message"><b>Love:</b> Jaan, ab time khatam ho gaya! 😘</p>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }
+
+                countdownElement.innerHTML = "Chat Closed!";
+
+                if (isUserLoggedIn) {
+                    localStorage.setItem("lastChatEndTime", Date.now());
+
+                    setTimeout(() => {
+                        alert("Milte hain 1 ghante baad! Unlimited Chat karna hai tou baato 😘");
+                        countdownElement.innerHTML = `Cooldown: 1 hour remaining`;
+                        setTimeout(startChatTimer, 60 * 60 * 1000);
+                    }, 500);
+                }
+            }
+        }, 1000);
+    }
+    
+   /*------------Chat Saving----------------*/
+   /*------------Chat Saving----------------*/
+
+    async function saveChatMessage(message, sender) {
+        try {
+            const chatRef = doc(db, "chats", userId);
+            const messagesRef = collection(chatRef, "messages");
+
+            await addDoc(messagesRef, {
+                text: message,
+                sender: sender,
+                timestamp: new Date()
+            });
+        } catch (error) {
+            console.error("Chat save error:", error);
+        }
+    }
+
+    async function loadChatHistory() {
+        let chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML = "<p>Loading chat history...</p>";
+
+        try {
+            const chatRef = doc(db, "chats", userId);
+            const messagesRef = collection(chatRef, "messages");
+            const q = query(messagesRef, orderBy("timestamp", "asc"));
+
+            const querySnapshot = await getDocs(q);
+            chatBox.innerHTML = "";
+
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                let messageHTML = `<p class="${data.sender === 'user' ? 'user-message' : 'bot-message'}"><b>${data.sender === 'user' ? 'You' : 'Love'}:</b> ${data.text}</p>`;
+                chatBox.innerHTML += messageHTML;
+            });
+
+            chatBox.scrollTop = chatBox.scrollHeight;
+        } catch (error) {
+            chatBox.innerHTML = "<p>Error loading chat history.</p>";
+            console.error("Chat load error:", error);
+        }
+    }
+    
+ /*------------Uset Auth----------------*/
+  /*------------Uset Auth----------------*/
+ 
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("User is logged in");
+            isUserLoggedIn = true;
+            userId = user.uid;
+        } else {
+            console.log("User is NOT logged in");
+            isUserLoggedIn = false;
+        }
+        startChatTimer();
+        loadChatHistory(); // **User aate hi purani chat load hogi**
+    });
+
+    window.onload = function() {
+        startChatTimer();
+        loadChatHistory(); // **Page load hone pe chat history dikhegi**
+    };
+
+    window.sendMessage = async function () {
+    if (!chatActive) return;
+
+    let userInput = document.getElementById("user-input").value.trim();
+    let chatBox = document.getElementById("chat-box");
+
+    if (userInput === "") return;
+
+    let userMessage = `<p class="user-message"><b>You:</b> ${userInput}</p>`;
+    chatBox.innerHTML += userMessage;
+    saveChatMessage(userInput, "user");
+
+    let apiKey = "AIzaSyBtiMlGeY4Q2N0vTHHs7ew3hbrPucIACug";
+    let apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash-002:generateContent?key=${apiKey}`;
+    
+    /*---------Ban & Block Word----------------*/
+    /*---------Ban & Block Word----------------*/
+
+let data = {};
+let bannedWords = ["mc", "bc", "fuck", "sucking", "lode", "lawde", "dick", "bsdk", "gaand", "gaandu", "sex"];
+
+// Check if user is blocked before anything
+if (localStorage.getItem("isBlocked") === "true") {
+    alert("Sun La#de! Bakchodi krega toh gaan# faad dungi. Ab nikal, tu block ho chuka hai! 😠");
+    return;
+}
+
+   /*---------Check Bad Word---------------*/
+   
+let badWordCount = parseInt(localStorage.getItem("badWordCount")) || 0;
+
+let isBadWord = bannedWords.some(badWord => userInput.toLowerCase().includes(badWord));
+
+if (isBadWord) {
+    badWordCount++; 
+    localStorage.setItem("badWordCount", badWordCount); // Counter update karo
+
+    if (badWordCount == 1) {
+        data = {
+            contents: [
+                { role: "user", parts: [{ "text": "Jaan, aise shabd acchhe nahi lagte! Pyaar se baat karo na. ❤️" }] }
+            ]
+        };
+    } else if (badWordCount == 2) {
+        data = {
+            contents: [
+                { role: "user", parts: [{ "text": "Maine kaha tha na, jaan! Aise shabd use mat karo. Ek aur baar aur block ho jaoge. 😢" }] }
+            ]
+        };
+    } else if (badWordCount >= 3) {
+        data = {
+            contents: [
+                { role: "user", parts: [{ "text": "Bas, Sun La#de! Bakchodi krega toh gaan# faad dungi. Ab nikal, tu block ho chuka hai. 😠" }] }
+            ]
+        };
+        localStorage.setItem("isBlocked", "true"); // User block karo
+    }
+} else {
+    data = {
+        contents: [
+            { role: "user", parts: [{ "text": "Tum ek romantic chatbot ho jo pyar bhari baatein karta hai. Tum Hinglish Me Reply Karna. Tumhare jawab charming aur flirty hone Chahiye. Jada Bada Bada reply nhi Short me karna hai." }] },
+            { role: "user", parts: [{ "text": userInput }] }
+        ]
+    };
+}
+
+   /*---------API Response----------------*/
+   /*---------API Response----------------*/
+
+    try {
+        let response = await fetch(apiUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        let result = await response.json();
+
+        if (!result || !result.candidates || !result.candidates[0] || !result.candidates[0].content || !result.candidates[0].content.parts || !result.candidates[0].content.parts[0].text) {
+            throw new Error("Invalid API Response");
+        }
+
+        let botText = result.candidates[0].content.parts[0].text || "Mujhe kuch samajh nahi aaya, jaan! 😘";
+        chatBox.innerHTML += `<p class="bot-message"><b>Love:</b> ${botText}</p>`;
+        saveChatMessage(botText, "bot");
+
+    } catch (error) {
+        chatBox.innerHTML += `<p class="bot-message"><b>Bot:</b> Oh no, jaan! Koi error aagayi. 😢</p>`;
+        console.error("API Error:", error);
+    }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+    document.getElementById("user-input").value = "";
+};
+ if (!localStorage.getItem("chatStartTime")) {
+    localStorage.setItem("chatStartTime", Date.now());
+}
+
+ function getRemainingTime() {
+    let chatStartTime = localStorage.getItem("chatStartTime");
+    if (!chatStartTime) return 300; // Default 5 min
+
+    chatStartTime = parseInt(chatStartTime); // Ensure it's a number
+    let elapsedTime = Math.floor((Date.now() - chatStartTime) / 1000); // Convert ms to sec
+    let remainingTime = Math.max(300 - elapsedTime, 0); // Ensure it doesn't go negative
+
+    console.log("Remaining Time:", remainingTime); // Debugging
+    return parseInt(remainingTime); // Ensure integer output
+}
+
+/*--------------Auto Scroling js---------------*/
+
+function addMessageToChat(message) {
+    let chatContainer = document.getElementById("chat-box");
+    
+    // Message ka ek div banayein
+    let messageDiv = document.createElement("div");
+    messageDiv.innerHTML = message;
+    
+    // Chat box me sabse pehle add karein
+    chatContainer.prepend(messageDiv);
+    
+    // Auto scroll to top
+    scrollToTop();
+}
+
+/*---------Auto Unblock---------------*/
+/*---------Auto Unblock----------------*/
+
+let now = new Date();
+let midnight = new Date(now);
+midnight.setHours(24, 0, 0, 0);
+
+if (Date.now() > midnight.getTime()) {
+    localStorage.removeItem("isBlocked");
+    localStorage.removeItem("badWordCount");
+}
+
+
+</script>
+  <div class="banner-ad">
+        <script>
+(function(uzg){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = uzg || {};
+s.src = "\/\/scornful-idea.com\/bRX.VosWdIGWlT0\/YdWbdOivYjWl5sueZJXSIE\/CenmB9buMZqU\/llkmPbTaYDxXN\/DrEO0\/M\/TLcSt\/NSjREr0\/MvTKQhx\/OFAP";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+l.parentNode.insertBefore(s, l);
+})({})
+        </script>
+    </div>
+    
+</body>
+</html>
