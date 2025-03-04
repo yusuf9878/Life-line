@@ -253,14 +253,14 @@ l.parentNode.insertBefore(s, l);
             let currentTime = Date.now();
 
             if (lastChatEndTime && currentTime - lastChatEndTime < 60 * 60 * 1000) {
-                let remainingCooldown = Math.ceil((60 * 120 * 1000 - (currentTime - lastChatEndTime)) / 1000);
+                let remainingCooldown = Math.ceil((60 * 60 * 1000 - (currentTime - lastChatEndTime)) / 1000);
                 countdownElement.innerHTML = `Cooldown: Wait ${Math.ceil(remainingCooldown / 60)} min`;
                 setTimeout(startChatTimer, remainingCooldown * 1000);
                 return;
             }
         }
 
-        timeLeft = isUserLoggedIn ? 300 : 70;
+        timeLeft = isUserLoggedIn ? 300 : 120;
         countdownElement.innerHTML = `Time Left: ${timeLeft} sec`;
 
         let timer = setInterval(() => {
