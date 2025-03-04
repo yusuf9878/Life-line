@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup / Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #6a11cb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2575fc;
+        }
+        .toggle {
+            margin-top: 10px;
+            color: #6a11cb;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .modal button {
+            background: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Signup Form -->
+    <div id="signupForm">
+        <h2>Signup</h2>
+        <div class="form-group">
+            <input type="text" id="signupName" placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+            <input type="tel" id="signupPhone" placeholder="Enter Phone Number">
+        </div>
+        <div class="form-group">
+            <input type="password" id="signupPassword" placeholder="Enter Password">
+        </div>
+        <button onclick="signup()">Signup</button>
+        <p class="toggle" onclick="showLogin()">Already have an account? Login</p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="loginForm" style="display: none;">
+        <h2>Login</h2>
+        <div class="form-group">
+            <input type="tel" id="loginPhone" placeholder="Enter Phone Number">
+        </div>
+        <div class="form-group">
+            <input type="password" id="loginPassword" placeholder="Enter Password">
+        </div>
+        <button onclick="login()">Login</button>
+        <p class="toggle" onclick="showSignup()">Don't have an account? Signup</p>
+    </div>
+</div>
+
+<!-- Success/Error Modal -->
+<div id="successModal" class="modal">
+    <p id="successMessage"></p>
+    <button onclick="closeModal()">OK</button>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyB5MfNubAqRLGBmADUwnVZP2V6qFbOk8SE",
+        authDomain: "live-live-75f7a.firebaseapp.com",
+        databaseURL: "https://live-live-75f7a-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "live-live-75f7a",
+        storageBucket: "live-live-75f7a.firebasestorage.app",
+        messagingSenderId: "111663726060",
+        appId: "1:111663726060:web:9816163585f56d799dd4c9",
+        measurementId: "G-P3P4BJH4QQ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    function showLogin() {
+        document.getElementById("signupForm").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+    }
+
+    function showSignup() {
+        document.getElementById("signupForm").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+    }
+
+    function showModal(message) {
+        document.getElementById("successMessage").innerText = message;
+        document.getElementById("successModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("successModal").style.display = "none";
+    }
+
+    async function signup() {
+        let name = document.getElementById("signupName").value;
+        let phone = document.getElementById("signupPhone").value;
+        let password = document.getElementById("signupPassword").value;
+
+        if (name && phone && password) {
+            let email = phone + "@custom.com";  // Phone ko email jaisa treat karna
+
+            try {
+                let userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                let user = userCredential.user;
+
+                await setDoc(doc(db, "users", user.uid), { name, phone, uid: user.uid });
+
+                showModal("Signup Successful!");
+                showLogin();
+            } catch (error) {
+                showModal(error.message);
+            }
+        } else {
+            showModal("Please fill all fields!");
+        }
+    }
+
+    async function login() {
+        let phone = document.getElementById("loginPhone").value;
+        let password = document.getElementById("loginPassword").value;
+        let email = phone + "@custom.com";
+
+        try {
+            let userCredential = await signInWithEmailAndPassword(auth, email, password);
+            let user = userCredential.user;
+            showModal("Login Successful! Welcome " + phone);
+              // 2 seconds ke baad redirect karega
+        setTimeout(() => {
+            window.location.href = "time.html";
+        }, 2000);
+        
+        } catch (error) {
+            showModal(error.message);
+        }
+    }
+
+    window.signup = signup;
+window.login = login;
+window.closeModal = closeModal;
+window.showLogin = showLogin;
+window.showSignup = showSignup;;
+
+</script>
+
+</body>
+</html>
