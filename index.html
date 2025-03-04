@@ -271,6 +271,11 @@ l.parentNode.insertBefore(s, l);
                 clearInterval(timer);
                 chatActive = false;
 
+                if (timeLeft <= 0) {
+        window.location.href = "Login.html"; // ⬅️ Redirect to login page
+        return;
+                }
+                
                 let userInput = document.getElementById("user-input");
                 let sendButton = document.querySelector("button");
                 let chatBox = document.getElementById("chat-box");
