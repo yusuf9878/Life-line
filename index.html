@@ -252,8 +252,8 @@ l.parentNode.insertBefore(s, l);
             let lastChatEndTime = localStorage.getItem("lastChatEndTime");
             let currentTime = Date.now();
 
-            if (lastChatEndTime && currentTime - lastChatEndTime < 60 * 120 * 1000) {
-                let remainingCooldown = Math.ceil((60 * 60 * 1000 - (currentTime - lastChatEndTime)) / 1000);
+            if (lastChatEndTime && currentTime - lastChatEndTime < 60 * 60 * 1000) {
+                let remainingCooldown = Math.ceil((60 * 120 * 1000 - (currentTime - lastChatEndTime)) / 1000);
                 countdownElement.innerHTML = `Cooldown: Wait ${Math.ceil(remainingCooldown / 60)} min`;
                 setTimeout(startChatTimer, remainingCooldown * 1000);
                 return;
